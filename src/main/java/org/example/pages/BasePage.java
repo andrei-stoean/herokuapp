@@ -1,9 +1,30 @@
 package org.example.pages;
 
 import org.example.infra.Context;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-public abstract class BasePage {
+import java.util.List;
 
-  private final WebDriver driver = Context.getDriver();
+public abstract class BasePage{
+
+  public final WebDriver driver = Context.getDriver();
+
+
+  public List<WebElement> getWebElementsList(By locator){
+
+    return driver.findElements(locator);
+
+  }
+
+  public String getWebElementsText(By locator){
+    return driver.findElement(locator).getText();
+  }
+
+  public String getWebElementsLink(By locator){
+    return driver.findElement(locator).getAttribute("href");
+  }
+
+
 }
